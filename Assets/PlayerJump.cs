@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerJump : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
-    public float moveSpeed = 5f;
+    public float speedJump = 5;
 
     // Start is called before the first frame update
     private void Start()
@@ -13,8 +13,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        float InputX = Input.GetAxis("Horizontal");
-
-        rigidbody2D.velocity = new Vector3(InputX * moveSpeed, rigidbody2D.velocity.y, 0);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, speedJump);
+        }
     }
 }
